@@ -13,8 +13,11 @@ struct RssReaderApp: App {
 
     var body: some Scene {
         WindowGroup {
+            Home()
+            /*
             ContentView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
+ */
         }
     }
 }
