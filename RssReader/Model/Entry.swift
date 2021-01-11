@@ -1,5 +1,5 @@
 //
-//  Article.swift
+//  Entry.swift
 //  RssReader
 //
 //  Created by Tomoyuki Murakami on 2021/01/09.
@@ -8,12 +8,22 @@
 
 import Foundation
 
-struct Article: Decodable, Hashable, Identifiable {
+struct Entry: Decodable, Hashable, Identifiable {
     let id: String
     let title: String
     let summary: String
     let content: String
     let updated: String
-    let link: String
-    let imageURL: String
+    let published: String
+    let links: [Link]
+    
+    enum CodingKeys: String, CodingKey {
+        case id
+        case title
+        case summary
+        case content
+        case updated
+        case published
+        case links = "link"
+    }
 }

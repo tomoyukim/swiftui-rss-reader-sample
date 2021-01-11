@@ -9,31 +9,41 @@
 import SwiftUI
 
 struct Home: View {
+    @StateObject private var viewModel: HomeViewModel = .init(feedService: FeedService())
     var body: some View {
         NavigationView {
-            ScrollView() {
-                LazyVStack(alignment: .leading) {
-                    /* Section
-                    HStack {
-                        Text("Today")
-                            .font(.subheadline)
-                            .fontWeight(.regular)
-                            .foregroundColor(.blue)
-                            .padding(.horizontal)
-                            .padding(.vertical, 6)
-                        Spacer()
+            if viewModel.isLoading {
+                Text("Loading...")
+                    .font(.headline)
+                    .foregroundColor(.gray)
+                    .offset(x: 0, y: -200)
+                    .navigationBarTitle("", displayMode: .inline)
+            } else {
+                ScrollView() {
+                    LazyVStack(alignment: .leading) {
+                        /* Section
+                        HStack {
+                            Text("Today")
+                                .font(.subheadline)
+                                .fontWeight(.regular)
+                                .foregroundColor(.blue)
+                                .padding(.horizontal)
+                                .padding(.vertical, 6)
+                            Spacer()
+                        }
+                        */
+                        ForEach(viewModel.articleCardInput) { input in
+                            NavigationLink(
+                                destination: WebView(url: URL(string: input.urlString)!),
+                                label: {
+                                    ArticleCard(input: input)
+                                })
+                            Divider()
+                        }
                     }
-                    */
-                    // TODO: foreach
-                    NavigationLink(
-                        destination: WebView(url: URL(string: "https://tomoyukim.hatenablog.com/entry/2020/09/14/225701")!),
-                        label: {
-                            ArticleCard(input: .init(title: "aaa", image: UIImage(named: "coverImage")!, summary: "aaa", date: "2020-09-14T22:57:01+09:00", feedTitle: "tomoyukim's blog"))
-                        })
-                    Divider()
                 }
+                .navigationBarTitle("Timeline", displayMode: .inline)
             }
-            .navigationBarTitle("Timeline", displayMode: .inline)
         }
     }
 }

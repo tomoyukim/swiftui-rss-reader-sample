@@ -7,3 +7,9 @@
 //
 
 import Foundation
+
+struct BlogFeedRequest: FeedRequestType {
+    typealias Response = Feed
+
+    var url: String
+}

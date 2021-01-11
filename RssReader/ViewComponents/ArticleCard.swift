@@ -33,10 +33,15 @@ struct ArticleCard: View {
         let image: UIImage
         let summary: String
         let date: String
+        let urlString: String
         let feedTitle: String
     }
         
     let input: Input
+    
+    init(input: Input) {
+        self.input = input
+    }
     
     var body: some View {
         HStack {
@@ -123,7 +128,7 @@ struct ArticleCard_BigImage: View {
 
 struct ArticleCard_Previews: PreviewProvider {
     static var previews: some View {
-        ArticleCard(input: .init(title: "Mac OSでexec-path-from-shellをEmacsで使いつつ、ターミナルでfishを使う", image: UIImage(named: "coverImage")!, summary: "fishはPOSIX非互換シェルのため、rbenv などがうまく動かなかったり、Bashスクリプトによる初期化がうまく引き継げないなどの問題がおきることがあります。 環境によりますが、PATH他の環境をfishに移行するのも面倒なので、とりあえずArch Linuxの方法を採用しておけば楽でよさそうです。 fish - ArchWiki 一方Mac OS環境ではEmacsをGUI起動するにあたって、exec-path-from-shell という素晴らしいパッケージを利用していることがあります。 github.com そのため、SHELLはBashだけどfishが実行されちゃって、以下のような…", date: "2020-09-14T22:57:01+09:00", feedTitle: "tomoyukim's blog")).previewLayout(.sizeThatFits)
+        ArticleCard(input: .init(title: "Mac OSでexec-path-from-shellをEmacsで使いつつ、ターミナルでfishを使う", image: UIImage(named: "coverImage")!, summary: "fishはPOSIX非互換シェルのため、rbenv などがうまく動かなかったり、Bashスクリプトによる初期化がうまく引き継げないなどの問題がおきることがあります。 環境によりますが、PATH他の環境をfishに移行するのも面倒なので、とりあえずArch Linuxの方法を採用しておけば楽でよさそうです。 fish - ArchWiki 一方Mac OS環境ではEmacsをGUI起動するにあたって、exec-path-from-shell という素晴らしいパッケージを利用していることがあります。 github.com そのため、SHELLはBashだけどfishが実行されちゃって、以下のような…", date: "2020-09-14T22:57:01+09:00", urlString: "http://localhost", feedTitle: "tomoyukim's blog")).previewLayout(.sizeThatFits)
 
 //        ArticleCard()
     }
