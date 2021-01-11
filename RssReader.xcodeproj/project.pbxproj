@@ -3,13 +3,16 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		8277EB7325A7EF35009FFEDC /* SafariView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8277EB7225A7EF35009FFEDC /* SafariView.swift */; };
 		8277EB7D25A7F0D4009FFEDC /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8277EB7C25A7F0D4009FFEDC /* Home.swift */; };
 		82AC883D25A85304004E844F /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82AC883C25A85304004E844F /* WebView.swift */; };
+		82AC884625A858DC004E844F /* FeedService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82AC884525A858DC004E844F /* FeedService.swift */; };
+		82AC885125A94F25004E844F /* FeedServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82AC885025A94F25004E844F /* FeedServiceError.swift */; };
+		82AC885725A951CA004E844F /* XMLCoder in Frameworks */ = {isa = PBXBuildFile; productRef = 82AC885625A951CA004E844F /* XMLCoder */; };
 		82B0FD9E25A7384200106F3C /* RssReaderApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B0FD9D25A7384200106F3C /* RssReaderApp.swift */; };
 		82B0FDA025A7384200106F3C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B0FD9F25A7384200106F3C /* ContentView.swift */; };
 		82B0FDA225A7384400106F3C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 82B0FDA125A7384400106F3C /* Assets.xcassets */; };
@@ -42,6 +45,8 @@
 		8277EB7225A7EF35009FFEDC /* SafariView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariView.swift; sourceTree = "<group>"; };
 		8277EB7C25A7F0D4009FFEDC /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		82AC883C25A85304004E844F /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
+		82AC884525A858DC004E844F /* FeedService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedService.swift; sourceTree = "<group>"; };
+		82AC885025A94F25004E844F /* FeedServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedServiceError.swift; sourceTree = "<group>"; };
 		82B0FD9A25A7384200106F3C /* RssReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RssReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		82B0FD9D25A7384200106F3C /* RssReaderApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RssReaderApp.swift; sourceTree = "<group>"; };
 		82B0FD9F25A7384200106F3C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -64,6 +69,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				82AC885725A951CA004E844F /* XMLCoder in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -110,6 +116,15 @@
 			path = Home;
 			sourceTree = "<group>";
 		};
+		82AC884425A858A5004E844F /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				82AC884525A858DC004E844F /* FeedService.swift */,
+				82AC885025A94F25004E844F /* FeedServiceError.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
 		82B0FD9125A7384200106F3C = {
 			isa = PBXGroup;
 			children = (
@@ -133,15 +148,16 @@
 		82B0FD9C25A7384200106F3C /* RssReader */ = {
 			isa = PBXGroup;
 			children = (
-				8277EB7A25A7F0B7009FFEDC /* Screen */,
-				8277EB7125A7EF16009FFEDC /* ViewComponents */,
-				82B0FD9D25A7384200106F3C /* RssReaderApp.swift */,
-				82B0FD9F25A7384200106F3C /* ContentView.swift */,
 				82B0FDA125A7384400106F3C /* Assets.xcassets */,
-				82B0FDA625A7384400106F3C /* Persistence.swift */,
+				82B0FD9F25A7384200106F3C /* ContentView.swift */,
 				82B0FDAB25A7384400106F3C /* Info.plist */,
-				82B0FDA825A7384400106F3C /* RssReader.xcdatamodeld */,
+				82B0FDA625A7384400106F3C /* Persistence.swift */,
 				82B0FDA325A7384400106F3C /* Preview Content */,
+				82B0FDA825A7384400106F3C /* RssReader.xcdatamodeld */,
+				82B0FD9D25A7384200106F3C /* RssReaderApp.swift */,
+				8277EB7A25A7F0B7009FFEDC /* Screen */,
+				82AC884425A858A5004E844F /* Service */,
+				8277EB7125A7EF16009FFEDC /* ViewComponents */,
 			);
 			path = RssReader;
 			sourceTree = "<group>";
@@ -188,6 +204,9 @@
 			dependencies = (
 			);
 			name = RssReader;
+			packageProductDependencies = (
+				82AC885625A951CA004E844F /* XMLCoder */,
+			);
 			productName = RssReader;
 			productReference = 82B0FD9A25A7384200106F3C /* RssReader.app */;
 			productType = "com.apple.product-type.application";
@@ -260,6 +279,9 @@
 				Base,
 			);
 			mainGroup = 82B0FD9125A7384200106F3C;
+			packageReferences = (
+				82AC885525A951CA004E844F /* XCRemoteSwiftPackageReference "XMLCoder" */,
+			);
 			productRefGroup = 82B0FD9B25A7384200106F3C /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -308,7 +330,9 @@
 				82B0FD9E25A7384200106F3C /* RssReaderApp.swift in Sources */,
 				8277EB7325A7EF35009FFEDC /* SafariView.swift in Sources */,
 				82AC883D25A85304004E844F /* WebView.swift in Sources */,
+				82AC885125A94F25004E844F /* FeedServiceError.swift in Sources */,
 				82B0FDD125A73E3800106F3C /* ArticleCard.swift in Sources */,
+				82AC884625A858DC004E844F /* FeedService.swift in Sources */,
 				8277EB7D25A7F0D4009FFEDC /* Home.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -629,6 +653,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		82AC885525A951CA004E844F /* XCRemoteSwiftPackageReference "XMLCoder" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/MaxDesiatov/XMLCoder.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.11.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		82AC885625A951CA004E844F /* XMLCoder */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 82AC885525A951CA004E844F /* XCRemoteSwiftPackageReference "XMLCoder" */;
+			productName = XMLCoder;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		82B0FDA825A7384400106F3C /* RssReader.xcdatamodeld */ = {
